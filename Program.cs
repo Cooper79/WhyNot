@@ -4,114 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Laba_5
+namespace ConsoleApp2
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Input your three-digit number: ");
+            int q = Convert.ToInt32(Console.ReadLine());
+            int l = q % 10;// last number
+            int s = q % 100 / 10;// second number
+            int f = q / 100;// first number
 
-            Console.WriteLine("Input N: "); //quanity of rows
-            int n = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Input M: "); //quantity of columns
-            int m = Convert.ToInt32(Console.ReadLine());
-           
-            int[,] arr = new int[n, m];
-            int plus = 0, minus = 0, nomer = 0;
+            int a = f + s + l;
 
-            for (int i = 0; i < n; i++) // input
+            if ((f + s + l) % 2 == 0)
             {
-
-                for (int j = 0; j < m; j++)
-                {
-                    Console.Write("a[" + i + "][" + j + "]: ");
-                    arr[i, j] = int.Parse(Console.ReadLine());
-                }
+                Console.WriteLine("Parnoe  {0}",a);
+            }
+            else
+            {
+                Console.WriteLine("Neparnoe {0}", a);
             }
 
-           for (int i = 0; i < n; i++) //search row
-            {
-                for(int j = 0; j < m; j++)
-                {
-                    
-                    if (arr[i, j] > 0)
-                    {
-                        plus++;
-                    }
-
-                    if (arr[i, j] < 0)
-                    {
-                        minus++;
-                    }
-
-                   
-
-                    
-                }
-
-                if (plus == minus)
-                {
-
-                    Console.WriteLine($"Number of row {i}");
-                }
-
-                else
-                {
-                    Console.WriteLine("This row does not meet the condition");
-                }
-
-                plus = 0;
-                minus = 0;
-            }
-
-
-            for (int j = 0; j < m; j++) //search column
-            {
-                for (int i = 0; i < n; i++)
-                {
-
-                    if (arr[i, j] > 0)
-                    {
-                        plus++;
-                    }
-
-                    if (arr[i, j] < 0)
-                    {
-                        minus++;
-                    }
-
-
-
-
-                }
-
-                if (plus == minus)
-                {
-
-                    Console.WriteLine($"Number of column {j}");
-                }
-
-                else
-                {
-                    Console.WriteLine("This column does not meet the condition");
-                }
-
-                plus = 0;
-                minus = 0;
-            }
-
-
-            for (int i = 0; i < n; i++) // output
-            {
-                Console.WriteLine("\n");
-
-                for(int j = 0; j < m; j++)
-                {
-                    Console.Write(arr[i, j] + "\t ");
-                }
-            }
-
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 }
